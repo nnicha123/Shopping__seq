@@ -3,15 +3,18 @@ module.exports = (sequelize,DataTypes) => {
         title:{
             type:DataTypes.STRING(255)
         },
-        img:{
+        image:{
             type:DataTypes.STRING(255)
+        },
+        price:{
+            type:DataTypes.FLOAT
+        },
+        quantity:{
+            type:DataTypes.INTEGER
         }
     },{
         tableName:'items',
         timestamps:false
     })
-    model.associate = models => {
-        model.hasOne(models.CheckOut,{foreignKey:'item_id'})
-    }
     return model
 }

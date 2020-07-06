@@ -7,10 +7,12 @@ const getItems = async(req,res) => {
     res.status(200).send(allItems)
 }
 const addItems = async(req,res) => {
-    const {title,img} = req.body
+    const {title,image,price,quantity} = req.body
     const newItem = await db.Item.create({
         title:title,
-        img:img
+        image:image,
+        price:price,
+        quantity:quantity
     })
     res.status(201).send(newItem)
 }

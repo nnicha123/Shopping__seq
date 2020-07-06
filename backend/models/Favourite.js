@@ -3,15 +3,13 @@ module.exports = (sequelize,DataTypes) => {
         title: {
             type:DataTypes.STRING(255)
         },
-        img:{
+        image:{
             type:DataTypes.STRING(255)
         }
     },{
         tableName:'favourites',
         timestamps:false
     })
-    model.associate = models => {
-        model.belongsTo(models.Item,{foreignKey:'item_id'})
-    }
+
     return model
 }
