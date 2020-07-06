@@ -14,7 +14,13 @@ const addFavourites = async (req,res) => {
     })
     res.status(201).send(addFav)
 }
+const deleteFavourite = async (req,res) => {
+    await db.Favourite.destroy({
+        where:{id:req.params.id}
+    })
+    res.status(204).send()
+}
 
 module.exports = {
-    getFavourites,addFavourites
+    getFavourites,addFavourites,deleteFavourite
 }

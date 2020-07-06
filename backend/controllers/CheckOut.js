@@ -16,7 +16,26 @@ const addCheckOuts = async(req,res) => {
     })
     res.status(201).send(newCheckout)
 }
+const deleteCheckOut = async (req,res) => {
+    await db.CheckOut.destroy({
+        where:{id:req.params.id}
+    })
+    res.status(204).send()
+}
+const updateCheckOut = async (req,res) => {
+    const targetId = req.params.id
+    const {title,image,price,quantity} = req.body
+    await db.CheckOut.update({
+        title:title,
+        image:image,
+        price:price,
+        quantity:quantity
+    }, {
+        where:{id:targetId}
+    }) 
+    res.status(200).send('Updated successfully')
+}
 
 module.exports = {
-    getCheckOuts,addCheckOuts
+    getCheckOuts,addCheckOuts,deleteCheckOut,updateCheckOut
 }
